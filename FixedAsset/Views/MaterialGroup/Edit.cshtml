@@ -1,0 +1,26 @@
+﻿@model TFAMtrlGrp
+<form method="post" class="row">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    @*asp-validation-summary has 3 types 1) All 2)ModelOnly 3)None*@
+    <input type="hidden" asp-for="FAMtrlGrpId" />
+    <div class="form-floating py-2 col-12">
+        <input asp-for="GrpShortDesc" class="form-control border-0 shadow" />
+        <label asp-for="GrpShortDesc" class="ms-2"></label>
+        <span asp-validation-for="GrpShortDesc" class="text-danger"></span>
+    </div>
+    <div class="form-floating py-2 col-12">
+        <input asp-for="GrpDesc" class="form-control border-0 shadow" />
+        <label asp-for="GrpDesc" class="ms-2"></label>
+        <span asp-validation-for="GrpDesc" class="text-danger"></span>
+    </div>
+
+    <div class="row pt-2">
+        <div class="col-6 col-md-3">
+            <button type="submit" class="btn btn-primary form-control">Edit</button>
+        </div>
+        <div class="col-6 col-md-3">
+            <a asp-controller="MaterialGroup" asp-action="Index" class="btn btn-outline-primary form-control border">Back</a>
+        </div>
+    </div>
+
+</form>
