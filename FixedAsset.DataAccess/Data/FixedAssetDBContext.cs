@@ -16,5 +16,6 @@ namespace FixedAsset.DataAccess.Data
         }
 
         public DbSet<TFAMtrlGrp> tFAMtrlGrp { get; set; }
+        public DbSet<TFAMtrlSubGrp> tFAMtrlSubGrp { get;set; }
     }
 }

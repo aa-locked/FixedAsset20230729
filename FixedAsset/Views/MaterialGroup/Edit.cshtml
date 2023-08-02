@@ -2,7 +2,9 @@
 <form method="post" class="row">
     <div asp-validation-summary="All" class="text-danger"></div>
     @*asp-validation-summary has 3 types 1) All 2)ModelOnly 3)None*@
-    
+    <input type="hidden" asp-for="FAMtrlGrpId" />
+
     <partial name="_commonfields" model="Model" />
+   
 
 </form>

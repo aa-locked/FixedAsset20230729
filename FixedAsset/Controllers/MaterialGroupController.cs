@@ -14,7 +14,8 @@ namespace FixedAsset.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+            var result = _fixedAssetDBContext.tFAMtrlGrp.ToList();
+            return View(result);
         }
         public IActionResult Create()
         {
@@ -24,13 +25,10 @@ namespace FixedAsset.Controllers
         public IActionResult Create(TFAMtrlGrp tFAMtrlGrp)
         {
 
-            if(tFAMtrlGrp.GrpDesc.ToLower().ToString()== tFAMtrlGrp.GrpShortDesc.ToLower().ToString())
+            if (tFAMtrlGrp.GrpDesc.ToLower().ToString() == tFAMtrlGrp.GrpShortDesc.ToLower().ToString())
             {
                 ModelState.AddModelError("", "Group Desc Cannot Be Same As Short Desc!");
-
-                //ModelState.AddModelError("GrpShortDesc", "Group Desc Cannot Be Same As Short Desc!");
             }
-
             if (ModelState.IsValid == true)
             {
                 _fixedAssetDBContext.tFAMtrlGrp.Add(tFAMtrlGrp);
@@ -40,8 +38,32 @@ namespace FixedAsset.Controllers
             }
 
             return View();
+        }
 
+        public IActionResult Edit(int famtrlGrpId)
+        {
+            var result = _fixedAssetDBContext.tFAMtrlGrp.FirstOrDefault(x => x.FAMtrlGrpId == famtrlGrpId);
+            return View(result);
+        }
 
+        [HttpPost]
+        public IActionResult Edit(TFAMtrlGrp tFAMtrlGrp)
+        {
+            if(ModelState.IsValid)
+            {
+                _fixedAssetDBContext.tFAMtrlGrp.Update(tFAMtrlGrp);
+                _fixedAssetDBContext.SaveChanges();
+                return RedirectToAction("Index", "MaterialGroup");
+            }
+            return View();
+        }
+
+        public IActionResult Delete(int famtrlGrpId)
+        {
+            var result = _fixedAssetDBContext.tFAMtrlGrp.FirstOrDefault(x => x.FAMtrlGrpId == famtrlGrpId);
+            _fixedAssetDBContext.tFAMtrlGrp.Remove(result);
+            _fixedAssetDBContext.SaveChanges();
+            return RedirectToAction("Index", "MaterialGroup");
         }
     }
 }

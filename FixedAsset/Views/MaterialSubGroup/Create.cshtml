@@ -1,0 +1,40 @@
+﻿@model TFAMtrlSubGrp
+
+<form method="post" class="row">
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+    @*asp-validation-summary has 3 types 1) All 2)ModelOnly 3)None*@
+    <div class="form-floating py-2 col-12">
+        <select asp-for="FAMtrlGrpId" asp-items="ViewBag.MtrlGroup" class="form-control border-0 shadow">
+            <option value="-1" disabled selected>--Select Mtrl group--</option>
+        </select>
+        <label asp-for="FAMtrlGrpId" class="ms-2"></label>
+        <span asp-validation-for="FAMtrlGrpId" class="text-danger"></span>
+    </div>
+
+    @*<div class="form-floating py-2 col-12">
+        <select asp-for="FAMtrlGrpId" asp-items="@(ViewData["ABC"] as IEnumerable<SelectListItem>)" class="form-control border-0 shadow">
+        </select>
+        <label asp-for="FAMtrlGrpId" class="ms-2"></label>
+        <span asp-validation-for="FAMtrlGrpId" class="text-danger"></span>
+    </div>*@
+    <div class="form-floating py-2 col-12">
+        <input asp-for="SubGrpShortDesc" class="form-control border-0 shadow" />
+        <label asp-for="SubGrpShortDesc" class="ms-2"></label>
+        <span asp-validation-for="SubGrpShortDesc" class="text-danger"></span>
+    </div>
+    <div class="form-floating py-2 col-12">
+        <input asp-for="SubGrpDesc" class="form-control border-0 shadow" />
+        <label asp-for="SubGrpDesc" class="ms-2"></label>
+        <span asp-validation-for="SubGrpDesc" class="text-danger"></span>
+    </div>
+
+    <div class="row pt-2">
+        <div class="col-6 col-md-3">
+            <button type="submit" class="btn btn-primary form-control">Create</button>
+        </div>
+        <div class="col-6 col-md-3">
+            <a asp-controller="MaterialGroup" asp-action="Index" class="btn btn-outline-primary form-control border">Back</a>
+        </div>
+    </div>
+</form>
