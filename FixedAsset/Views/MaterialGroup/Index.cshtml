@@ -1,18 +1,18 @@
-﻿@model List<TFAMtrlGrp>
+﻿@model List<MtrlGrpDTO>
 
 <div class="container">
     <h2 class="text text-center ">Material Group Detail</h2>
     <a asp-controller="MaterialGroup" asp-action="Create" class="btn btn-primary float-end m-2"><i class="bi bi-plus-square"></i>Create New Material Group</a>
 
-    <table class="table table-bordered table-striped">
+    <table id="tblGroup" class="table table-bordered table-striped">
         <thead>
-            <th>Materail Group Id</th>
-            <th>Short Desc</th>
-            <th>Desc</th>
-            <th>Action</th>
+        <th>Materail Group Id</th>
+        <th>Short Desc</th>
+        <th>Desc</th>
+        <th>Action</th>
         </thead>
         <tbody>
-            @foreach(var insideData in Model)
+            @foreach (var insideData in Model)
             {
                 <tr>
                     <td></td>
@@ -28,3 +28,12 @@
     </table>
 
 </div>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $('#tblGroup').DataTable();
+        });
+    </script>
+    
+}

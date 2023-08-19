@@ -25,6 +25,7 @@ namespace FixedAsset.Model.Domain.MaterialGroup
         [Required]
         [StringLength(200)]
         [DisplayName("Description(200 Char)")]
+        [GrpValidation]
         public string SubGrpDesc { get; set; }
         public bool ActStatus { get; set; } = true;
         public int AddedBy { get; set; } = 123;

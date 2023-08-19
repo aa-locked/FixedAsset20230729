@@ -1,16 +1,16 @@
-﻿@model TFAMtrlSubGrp
+﻿@model VM_MtrlSubGrp
 
 <form method="post" class="row">
 
     <div asp-validation-summary="All" class="text-danger"></div>
     @*asp-validation-summary has 3 types 1) All 2)ModelOnly 3)None*@
-    <div class="form-floating py-2 col-12">
+    @*<div class="form-floating py-2 col-12">
         <select asp-for="FAMtrlGrpId" asp-items="ViewBag.MtrlGroup" class="form-control border-0 shadow">
             <option value="-1" disabled selected>--Select Mtrl group--</option>
         </select>
         <label asp-for="FAMtrlGrpId" class="ms-2"></label>
         <span asp-validation-for="FAMtrlGrpId" class="text-danger"></span>
-    </div>
+    </div>*@
 
     @*<div class="form-floating py-2 col-12">
         <select asp-for="FAMtrlGrpId" asp-items="@(ViewData["ABC"] as IEnumerable<SelectListItem>)" class="form-control border-0 shadow">
@@ -18,15 +18,26 @@
         <label asp-for="FAMtrlGrpId" class="ms-2"></label>
         <span asp-validation-for="FAMtrlGrpId" class="text-danger"></span>
     </div>*@
+
+
     <div class="form-floating py-2 col-12">
-        <input asp-for="SubGrpShortDesc" class="form-control border-0 shadow" />
-        <label asp-for="SubGrpShortDesc" class="ms-2"></label>
-        <span asp-validation-for="SubGrpShortDesc" class="text-danger"></span>
+        <select asp-for="TFAMtrlSubGrp.FAMtrlGrpId" asp-items="@Model.MtrlGrpList" class="form-control border-0 shadow">
+            <option value="-1" disabled selected>--Select Mtrl group--</option>
+        </select>
+        <label asp-for="TFAMtrlSubGrp.FAMtrlGrpId" class="ms-2"></label>
+        <span asp-validation-for="TFAMtrlSubGrp.FAMtrlGrpId" class="text-danger"></span>
+    </div>
+
+
+    <div class="form-floating py-2 col-12">
+        <input asp-for="TFAMtrlSubGrp.SubGrpShortDesc" class="form-control border-0 shadow" />
+        <label asp-for="TFAMtrlSubGrp.SubGrpShortDesc" class="ms-2"></label>
+        <span asp-validation-for="TFAMtrlSubGrp.SubGrpShortDesc" class="text-danger"></span>
     </div>
     <div class="form-floating py-2 col-12">
-        <input asp-for="SubGrpDesc" class="form-control border-0 shadow" />
-        <label asp-for="SubGrpDesc" class="ms-2"></label>
-        <span asp-validation-for="SubGrpDesc" class="text-danger"></span>
+        <input asp-for="TFAMtrlSubGrp.SubGrpDesc" class="form-control border-0 shadow" />
+        <label asp-for="TFAMtrlSubGrp.SubGrpDesc" class="ms-2"></label>
+        <span asp-validation-for="TFAMtrlSubGrp.SubGrpDesc" class="text-danger"></span>
     </div>
 
     <div class="row pt-2">
@@ -38,3 +49,10 @@
         </div>
     </div>
 </form>
+@*Section script added for partial view having JS only
+Section script is not added for normal script*@
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
